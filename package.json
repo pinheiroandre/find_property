@@ -1,0 +1,9 @@
+{
+  "name": "find_property",
+  "version": "1.0.35",
+  "license": "MIT",
+  "category": "miscellaneous",
+  "dependencies": {
+    "rung-cli": "0.7.4"
+  }
+}
