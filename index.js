@@ -62,15 +62,20 @@ function main(context, done) {
 	.then(resultado => {
 		var residencias = resultado.body.listings;
 		var i = 0;
+		var j = 0;
         var alertas = [];
+		var cComment = ``;
 
         for(i = 0; i < residencias.length; i++) {
+			cComment = `[Acesse aqui e tenha mais informações](${residencias[i].siteUrl})`
+			for(j = 0; j < residencias[i].thumbnails.length;j++){
+				cComment += `![Acessar](${residencias[i].thumbnails[j]})\n`
+			}
+
             alertas.push({
                 title: 'Olá, encontramos o imóvel que você procura.',
                 content: render(residencias[i].price, residencias[i].propertyTypeName + " - " + residencias[i].neighborhoodName, residencias[i].image),
-				comment:
-					`[Acesse aqui e tenha mais informações](${residencias[i].siteUrl})
-           		 	![Acessar](${residencias[i].image})`
+				comment: cComment
             });
         }
 
